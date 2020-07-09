@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,18 +6,17 @@ using UnityEngine.Video;
 using ZXing;
 
 /// <summary>
-/// Reads QRCode from second standard Unity camera (It does not use the ARFoundation camera)
+/// Reads QRCode from standard camera (It does not use the ARFoundation ARKit camera)
 /// </summary>
 public class ReadQRCode : MonoBehaviour
 {
     public Camera ARCamera;
     public Camera QRCamera;
-    /// <summary>
-    /// The URL that is currently in use to stream video 
-    /// </summary>
+    
     private bool grabQR;
+    
     /// <summary>
-    /// Match the second camera used for QR Code scanning with the one used by ARFoundation 
+    /// Match the Unity camera used for QR Code scanning with the one used by ARFoundation 
     /// </summary>
     public void OnPreRender()
     {
@@ -33,7 +32,7 @@ public class ReadQRCode : MonoBehaviour
     }
     private void Update()
     {
-        // Scan QRCode onClick
+        // Scan QRCode 
         if (QRButton.clicked)
         {
             QRCamera.enabled = true;
@@ -41,7 +40,7 @@ public class ReadQRCode : MonoBehaviour
         }
     }
     /// <summary>
-    /// Scan QRCode using ZXing and pass url to PlayVideo() 
+    /// Scan QRCode using ZXing
     /// </summary>
     private void OnPostRender()
     {
